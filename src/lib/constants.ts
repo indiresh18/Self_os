@@ -49,27 +49,27 @@ export const INITIAL_WEEKLY_TASKS: WeeklyTask[] = [
 
 export const INITIAL_SHOPPING_ITEMS: ShoppingItem[] = [
   { id: 's1', name: 'ABC powder', quantity: '1 pack / tin', category: 'Self-Care / Health', is_purchased: false },
-  { id: 's2', name: 'Oats', quantity: '1 kg', category: 'Food / Breakfast', is_purchased: true, purchase_date: '2026-11-10', price: 180 },
+  { id: 's2', name: 'Oats', quantity: '1 kg', category: 'Food / Breakfast', is_purchased: false },
   { id: 's3', name: 'Soya chunks', quantity: '500g', category: 'Nutrition / Protein', is_purchased: false },
   { id: 's4', name: 'Nellikkai (Amla)', quantity: '500g fresh / powder', category: 'Self-Care / Health', is_purchased: false },
   { id: 's5', name: 'Flax seeds', quantity: '250g', category: 'Nutrition / Seeds', is_purchased: false },
-  { id: 's6', name: 'Fruits / fruit-water ingredients', quantity: 'Apples, lemons, chia seeds', category: 'Health / Hydration', is_purchased: true, purchase_date: '2026-11-12', price: 220 },
+  { id: 's6', name: 'Fruits / fruit-water ingredients', quantity: 'Apples, lemons, chia seeds', category: 'Health / Hydration', is_purchased: false },
 ];
 
 export const INITIAL_CAREER_TASKS: CareerTask[] = [
   // Current tasks
-  { id: 'ct1', title: 'Complete AI Video Set 1', status: 'in_progress', priority: 'high', semester: 'general', roadmap_category: 'current_tasks', created_at: '2026-11-14T00:00:00.000Z' },
+  { id: 'ct1', title: 'Complete AI Video Set 1', status: 'not_started', priority: 'high', semester: 'general', roadmap_category: 'current_tasks', created_at: '2026-11-14T00:00:00.000Z' },
   { id: 'ct2', title: 'Complete AI Video Set 2', status: 'not_started', priority: 'high', semester: 'general', roadmap_category: 'current_tasks', created_at: '2026-11-14T00:00:00.000Z' },
-  { id: 'ct3', title: 'Start MERN Stack', status: 'in_progress', priority: 'urgent', semester: 'semester_4', roadmap_category: 'current_tasks', created_at: '2026-11-14T00:00:00.000Z' },
-  { id: 'ct4', title: 'Develop the MyLife OS application', status: 'in_progress', priority: 'urgent', semester: 'semester_4', roadmap_category: 'current_tasks', created_at: '2026-11-14T00:00:00.000Z' },
+  { id: 'ct3', title: 'Start MERN Stack', status: 'not_started', priority: 'urgent', semester: 'semester_4', roadmap_category: 'current_tasks', created_at: '2026-11-14T00:00:00.000Z' },
+  { id: 'ct4', title: 'Develop the MyLife OS application', status: 'not_started', priority: 'urgent', semester: 'semester_4', roadmap_category: 'current_tasks', created_at: '2026-11-14T00:00:00.000Z' },
 
   // Fourth-semester roadmap
   { id: 'sem4_1', title: 'Advanced Java', status: 'not_started', priority: 'high', semester: 'semester_4', roadmap_category: 'roadmap_sem4', created_at: '2026-11-14T00:00:00.000Z' },
-  { id: 'sem4_2', title: 'MERN Stack Mastery', status: 'in_progress', priority: 'urgent', semester: 'semester_4', roadmap_category: 'roadmap_sem4', created_at: '2026-11-14T00:00:00.000Z' },
-  { id: 'sem4_3', title: 'Build 4–5 quality projects', status: 'in_progress', priority: 'urgent', semester: 'semester_4', roadmap_category: 'roadmap_sem4', created_at: '2026-11-14T00:00:00.000Z' },
+  { id: 'sem4_2', title: 'MERN Stack Mastery', status: 'not_started', priority: 'urgent', semester: 'semester_4', roadmap_category: 'roadmap_sem4', created_at: '2026-11-14T00:00:00.000Z' },
+  { id: 'sem4_3', title: 'Build 4–5 quality projects', status: 'not_started', priority: 'urgent', semester: 'semester_4', roadmap_category: 'roadmap_sem4', created_at: '2026-11-14T00:00:00.000Z' },
   { id: 'sem4_4', title: 'Learn SEO basics', status: 'not_started', priority: 'medium', semester: 'semester_4', roadmap_category: 'roadmap_sem4', created_at: '2026-11-14T00:00:00.000Z' },
-  { id: 'sem4_5', title: 'Explore free Oracle Java certifications / badges', status: 'in_progress', priority: 'high', semester: 'semester_4', roadmap_category: 'roadmap_sem4', created_at: '2026-11-14T00:00:00.000Z' },
-  { id: 'sem4_6', title: 'Continue DSA (Arrays, Trees, Graphs, DP)', status: 'in_progress', priority: 'high', semester: 'semester_4', roadmap_category: 'roadmap_sem4', created_at: '2026-11-14T00:00:00.000Z' },
+  { id: 'sem4_5', title: 'Explore free Oracle Java certifications / badges', status: 'not_started', priority: 'high', semester: 'semester_4', roadmap_category: 'roadmap_sem4', created_at: '2026-11-14T00:00:00.000Z' },
+  { id: 'sem4_6', title: 'Continue DSA (Arrays, Trees, Graphs, DP)', status: 'not_started', priority: 'high', semester: 'semester_4', roadmap_category: 'roadmap_sem4', created_at: '2026-11-14T00:00:00.000Z' },
 
   // Fifth-semester roadmap
   { id: 'sem5_1', title: 'Python for AI & Backend Systems', status: 'not_started', priority: 'high', semester: 'semester_5', roadmap_category: 'roadmap_sem5', created_at: '2026-11-14T00:00:00.000Z' },
@@ -87,15 +87,15 @@ export const INITIAL_CAREER_GOALS: CareerGoal[] = [
     description: 'Master full-stack and modern AI workflows, solve 250+ LeetCode problems, and secure a top software engineering role.',
     category: 'placement',
     priority: 'urgent',
-    progress_pct: 40,
-    status: 'in_progress',
-    start_date: '2026-10-01',
+    progress_pct: 0,
+    status: 'not_started',
+    start_date: '2026-11-14',
     target_date: '2027-06-30',
     milestones: [
       { id: 'm1', title: 'Build and deploy 4-5 full-stack portfolio projects', completed: false },
       { id: 'm2', title: 'Solve 150 LeetCode Medium DSA problems', completed: false },
       { id: 'm3', title: 'Attain Oracle Java Badges & Certifications', completed: false },
-      { id: 'm4', title: 'Complete AI Agent & LLM specialization pipeline', completed: true },
+      { id: 'm4', title: 'Complete AI Agent & LLM specialization pipeline', completed: false },
     ]
   },
   {
@@ -104,26 +104,26 @@ export const INITIAL_CAREER_GOALS: CareerGoal[] = [
     description: 'Score 9.0+ SGPA in Semester 4 while balancing daily self-care and gym routine.',
     category: 'semester',
     priority: 'high',
-    progress_pct: 65,
-    status: 'in_progress',
-    start_date: '2026-11-01',
+    progress_pct: 0,
+    status: 'not_started',
+    start_date: '2026-11-14',
     target_date: '2027-04-15',
     milestones: [
-      { id: 'm21', title: 'Internal Exam 1 top score', completed: true },
+      { id: 'm21', title: 'Internal Exam 1 top score', completed: false },
       { id: 'm22', title: 'Internal Exam 2 top score', completed: false },
-      { id: 'm23', title: 'Submit all lab records & mini-projects', completed: true }
+      { id: 'm23', title: 'Submit all lab records & mini-projects', completed: false }
     ]
   }
 ];
 
 export const INITIAL_SKILLS: Skill[] = [
-  { id: 'sk1', name: 'MERN Stack (MongoDB, Express, React, Node)', category: 'Web Development', level: 'intermediate', progress_pct: 65 },
-  { id: 'sk2', name: 'Advanced Java & OOPs', category: 'Core CS', level: 'intermediate', progress_pct: 70 },
-  { id: 'sk3', name: 'Data Structures & Algorithms', category: 'Competitive Coding', level: 'intermediate', progress_pct: 55 },
-  { id: 'sk4', name: 'SEO Basics & Web Analytics', category: 'Marketing & Web', level: 'beginner', progress_pct: 30 },
-  { id: 'sk5', name: 'Python & Machine Learning', category: 'AI / Data', level: 'beginner', progress_pct: 25 },
-  { id: 'sk6', name: 'AI Agents & LLM Integration', category: 'AI / Data', level: 'intermediate', progress_pct: 50 },
-  { id: 'sk7', name: 'Next.js & Supabase Architecture', category: 'Full Stack', level: 'advanced', progress_pct: 85 },
+  { id: 'sk1', name: 'MERN Stack (MongoDB, Express, React, Node)', category: 'Web Development', level: 'beginner', progress_pct: 0 },
+  { id: 'sk2', name: 'Advanced Java & OOPs', category: 'Core CS', level: 'beginner', progress_pct: 0 },
+  { id: 'sk3', name: 'Data Structures & Algorithms', category: 'Competitive Coding', level: 'beginner', progress_pct: 0 },
+  { id: 'sk4', name: 'SEO Basics & Web Analytics', category: 'Marketing & Web', level: 'beginner', progress_pct: 0 },
+  { id: 'sk5', name: 'Python & Machine Learning', category: 'AI / Data', level: 'beginner', progress_pct: 0 },
+  { id: 'sk6', name: 'AI Agents & LLM Integration', category: 'AI / Data', level: 'beginner', progress_pct: 0 },
+  { id: 'sk7', name: 'Next.js & Supabase Architecture', category: 'Full Stack', level: 'beginner', progress_pct: 0 },
 ];
 
 export const INITIAL_CERTIFICATIONS: Certification[] = [
@@ -132,9 +132,9 @@ export const INITIAL_CERTIFICATIONS: Certification[] = [
     name: 'Oracle Java Foundations Explorer / Badges',
     provider: 'Oracle University',
     course_url: 'https://mylearn.oracle.com',
-    start_date: '2026-11-05',
+    start_date: '2026-11-14',
     target_completion_date: '2026-12-15',
-    status: 'in_progress',
+    status: 'not_started',
     notes: 'Free official Oracle digital badges for Java SE foundations.'
   },
   {
@@ -142,7 +142,7 @@ export const INITIAL_CERTIFICATIONS: Certification[] = [
     name: 'MERN Stack Full Developer Certificate',
     provider: 'freeCodeCamp / Coursera',
     course_url: 'https://www.freecodecamp.org',
-    start_date: '2026-11-15',
+    start_date: '2026-11-14',
     target_completion_date: '2027-01-20',
     status: 'not_started',
     notes: 'Covering React 19, Node API design, MongoDB aggregation pipelines.'
@@ -157,7 +157,7 @@ export const INITIAL_PROJECTS: Project[] = [
     tech_stack: 'Next.js 15, TypeScript, Tailwind CSS, Supabase PostgreSQL, Recharts',
     github_url: 'https://github.com/self_os/mylife-os',
     live_url: 'https://mylife-os.vercel.app',
-    status: 'in_progress',
+    status: 'planned',
     start_date: '2026-11-14'
   },
   {
@@ -172,25 +172,18 @@ export const INITIAL_PROJECTS: Project[] = [
 ];
 
 export const INITIAL_SAVINGS_GOALS: SavingsGoal[] = [
-  { id: 'sg1', title: 'Trimmer', target_amount: 1500, saved_amount: 500, priority: 'medium', status: 'active', notes: 'Grooming & personal care essential' },
-  { id: 'sg2', title: 'Shirts', target_amount: 2000, saved_amount: 400, priority: 'low', status: 'active', notes: 'Formal & casual college wear' },
-  { id: 'sg3', title: 'Pants', target_amount: 2500, saved_amount: 600, priority: 'low', status: 'active', notes: 'Comfortable chinos and formal trousers' },
-  { id: 'sg4', title: 'Going out with friends', target_amount: 1000, saved_amount: 750, priority: 'medium', status: 'active', notes: 'Weekend cafe & social budget' },
+  { id: 'sg1', title: 'Trimmer', target_amount: 1500, saved_amount: 0, priority: 'medium', status: 'active', notes: 'Grooming & personal care essential' },
+  { id: 'sg2', title: 'Shirts', target_amount: 2000, saved_amount: 0, priority: 'low', status: 'active', notes: 'Formal & casual college wear' },
+  { id: 'sg3', title: 'Pants', target_amount: 2500, saved_amount: 0, priority: 'low', status: 'active', notes: 'Comfortable chinos and formal trousers' },
+  { id: 'sg4', title: 'Going out with friends', target_amount: 1000, saved_amount: 0, priority: 'medium', status: 'active', notes: 'Weekend cafe & social budget' },
 ];
 
-export const INITIAL_TRANSACTIONS: Transaction[] = [
-  { id: 't1', amount: 5000, type: 'income', category: 'Allowance / Stipend', date: '2026-11-01', description: 'Monthly allowance / freelance credit', notes: 'Budget base' },
-  { id: 't2', amount: 1000, type: 'savings_deposit', category: 'Savings Contribution', date: '2026-11-02', description: 'Monthly base savings target deposited', notes: 'Allocated to primary reserve' },
-  { id: 't3', amount: 450, type: 'expense', category: 'Self-Care & Groceries', date: '2026-11-05', description: 'Oats, buttermilk, and amla ingredients', notes: 'Nutrition support' },
-  { id: 't4', amount: 300, type: 'expense', category: 'Education & Study', date: '2026-11-08', description: 'College stationery and notebook supplies' },
-  { id: 't5', amount: 500, type: 'savings_deposit', category: 'Savings Contribution', date: '2026-11-10', description: 'Trimmer purchase goal savings allocation', savings_goal_id: 'sg1' },
-  { id: 't6', amount: 250, type: 'expense', category: 'Transport', date: '2026-11-12', description: 'College bus/metro pass top-up' },
-];
+export const INITIAL_TRANSACTIONS: Transaction[] = [];
 
 export const INITIAL_PERSONAL_TASKS: PersonalTask[] = [
   { id: 'pt1', title: 'Bank account', status: 'pending', priority: 'high', category: 'administrative', notes: 'Complete KYC and address verification at branch' },
   { id: 'pt2', title: 'ATM card', status: 'pending', priority: 'high', category: 'administrative', notes: 'Apply for contactless debit card and set PIN' },
-  { id: 'pt3', title: 'Aadhaar update', status: 'in_progress', priority: 'urgent', category: 'administrative', notes: 'Biometric and mobile number linkage appointment' },
+  { id: 'pt3', title: 'Aadhaar update', status: 'pending', priority: 'urgent', category: 'administrative', notes: 'Biometric and mobile number linkage appointment' },
   { id: 'pt4', title: 'PAN card', status: 'pending', priority: 'high', category: 'administrative', notes: 'Verify NSDL application status and download e-PAN' },
 ];
 

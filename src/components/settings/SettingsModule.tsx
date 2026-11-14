@@ -27,8 +27,8 @@ export const SettingsModule: React.FC = () => {
     resetToDefaultData
   } = useApp();
 
-  const [fullName, setFullName] = useState('Indhirani');
-  const [profileEmail, setProfileEmail] = useState(userEmail || 'indhirani@example.com');
+  const [fullName, setFullName] = useState(settings.user_name || 'Indiresh');
+  const [profileEmail, setProfileEmail] = useState(settings.user_email || userEmail || 'indiresh@example.com');
 
   return (
     <div className="space-y-6 pb-12 max-w-4xl">
@@ -101,7 +101,10 @@ export const SettingsModule: React.FC = () => {
         <NeoButton
           variant="primary"
           size="sm"
-          onClick={() => alert(`Profile updated for ${fullName}!`)}
+          onClick={() => {
+            updateSettings({ user_name: fullName, user_email: profileEmail });
+            alert(`Profile updated for ${fullName}!`);
+          }}
         >
           Save Profile
         </NeoButton>
@@ -172,3 +175,4 @@ export const SettingsModule: React.FC = () => {
     </div>
   );
 };
+

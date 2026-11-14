@@ -89,7 +89,14 @@ export const CareerPlannerModule: React.FC = () => {
   const [isSkillModalOpen, setIsSkillModalOpen] = useState(false);
   const [skillName, setSkillName] = useState('');
   const [skillCategory, setSkillCategory] = useState('Web Development');
-  const [skillProgress, setSkillProgress] = useState(50);
+  const [skillProgress, setSkillProgress] = useState(0);
+
+  const getLevelFromPct = (pct: number): 'beginner' | 'intermediate' | 'advanced' | 'master' => {
+    if (pct >= 90) return 'master';
+    if (pct >= 70) return 'advanced';
+    if (pct >= 35) return 'intermediate';
+    return 'beginner';
+  };
 
   // Filter tasks
   const currentSprintTasks = careerTasks.filter(t => t.roadmap_category === 'current_tasks');
@@ -826,12 +833,134 @@ export const CareerPlannerModule: React.FC = () => {
                     {s.level} ({s.progress_pct}%)
                   </span>
                 </div>
-                <div className="w-full bg-zinc-200 border border-black rounded-full h-3 overflow-hidden">
-                  <div className="bg-emerald-500 h-full" style={{ width: `${s.progress_pct}%` }} />
+                <div className="w-full bg-zinc-200 border border-black rounded-full h-3 overflow-hidden mb-3">
+                  <div className="bg-emerald-500 h-full transition-all" style={{ width: `${s.progress_pct}%` }} />
+                </div>
+                {/* Interactive progress controls */}
+                <div className="flex items-center justify-between pt-2 border-t border-zinc-200 text-xs">
+                  <div className="flex items-center gap-1.5">
+                    <button
+                      type="button"
+                      onClick={() => {
+                        const next = Math.max(0, s.progress_pct - 10);
+                        updateSkill(s.id, { progress_pct: next, level: getLevelFromPct(next) });
+                      }}
+                      className="px-2 py-0.5 font-bold bg-zinc-100 hover:bg-zinc-200 border border-black rounded cursor-pointer text-zinc-800"
+                      title="Decrease by 10%"
+                    >
+                      -10%
+                    </button>
+                    <button
+                      type="button"
+                      onClick={() => {
+                        const next = Math.min(100, s.progress_pct + 10);
+                        updateSkill(s.id, { progress_pct: next, level: getLevelFromPct(next) });
+                      }}
+                      className="px-2 py-0.5 font-bold bg-emerald-200 hover:bg-emerald-300 border border-black rounded cursor-pointer text-emerald-950"
+                      title="Increase by 10%"
+                    >
+                      +10%
+                    </button>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <input
+                      type="range"
+                      min="0"
+                      max="100"
+                      step="5"
+                      value={s.progress_pct}
+                      onChange={(e) => {
+                        const val = parseInt(e.target.value, 10);
+                        updateSkill(s.id, { progress_pct: val, level: getLevelFromPct(val) });
+                      }}
+                      className="w-24 accent-emerald-500 cursor-pointer"
+                      title={`Progress: ${s.progress_pct}%`}
+                    />
+                    <button
+                      type="button"
+                      onClick={() => {
+                        if (confirm(`Remove skill "${s.name}"?`)) deleteSkill(s.id);
+                      }}
+                      className="p-1 hover:bg-rose-400 border border-black rounded cursor-pointer text-zinc-600 hover:text-black"
+                      title="Delete Skill"
+                    >
+                      <Trash2 className="w-3.5 h-3.5" />
+                    </button>
+                  </div>
                 </div>
               </NeoCard>
             ))}
           </div>
+
+          {/* Add Skill Modal */}
+          {isSkillModalOpen && (
+            <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-xs">
+              <NeoCard className="w-full max-w-md bg-[#FAF6EE] p-5">
+                <div className="flex items-center justify-between border-b-2 border-black pb-2 mb-4">
+                  <h3 className="font-black text-lg uppercase text-zinc-900">Add Technical Skill</h3>
+                  <button onClick={() => setIsSkillModalOpen(false)} className="p-1 border border-black rounded bg-white">✕</button>
+                </div>
+                <div className="space-y-3">
+                  <div>
+                    <label className="block text-xs font-bold uppercase mb-1">Skill Name</label>
+                    <input
+                      type="text"
+                      placeholder="e.g. Docker, System Design, GraphQL"
+                      value={skillName}
+                      onChange={e => setSkillName(e.target.value)}
+                      className="w-full neo-input"
+                    />
+                  </div>
+                  <div>
+                    <label className="block text-xs font-bold uppercase mb-1">Category</label>
+                    <input
+                      type="text"
+                      placeholder="e.g. Web Development, Core CS, AI"
+                      value={skillCategory}
+                      onChange={e => setSkillCategory(e.target.value)}
+                      className="w-full neo-input"
+                    />
+                  </div>
+                  <div>
+                    <div className="flex justify-between text-xs font-bold uppercase mb-1">
+                      <span>Initial Progress:</span>
+                      <span className="text-emerald-700 font-black">{skillProgress}% ({getLevelFromPct(skillProgress)})</span>
+                    </div>
+                    <input
+                      type="range"
+                      min="0"
+                      max="100"
+                      step="5"
+                      value={skillProgress}
+                      onChange={e => setSkillProgress(parseInt(e.target.value, 10))}
+                      className="w-full accent-emerald-500 cursor-pointer"
+                    />
+                  </div>
+                  <div className="flex justify-end gap-2 pt-3 border-t-2 border-black">
+                    <NeoButton variant="neutral" onClick={() => setIsSkillModalOpen(false)}>Cancel</NeoButton>
+                    <NeoButton
+                      variant="primary"
+                      onClick={() => {
+                        if (!skillName) return;
+                        addSkill({
+                          name: skillName,
+                          category: skillCategory || 'Technical',
+                          level: getLevelFromPct(skillProgress),
+                          progress_pct: skillProgress
+                        });
+                        setSkillName('');
+                        setSkillCategory('Web Development');
+                        setSkillProgress(0);
+                        setIsSkillModalOpen(false);
+                      }}
+                    >
+                      Save Skill
+                    </NeoButton>
+                  </div>
+                </div>
+              </NeoCard>
+            </div>
+          )}
         </div>
       )}
 
@@ -904,3 +1033,4 @@ export const CareerPlannerModule: React.FC = () => {
     </div>
   );
 };
+

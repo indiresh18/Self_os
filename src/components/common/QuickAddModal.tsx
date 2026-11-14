@@ -547,3 +547,4 @@ export const QuickAddModal: React.FC<QuickAddModalProps> = ({
     </div>
   );
 };
+

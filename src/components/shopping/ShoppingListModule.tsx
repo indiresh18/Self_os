@@ -270,3 +270,4 @@ export const ShoppingListModule: React.FC = () => {
     </div>
   );
 };
+

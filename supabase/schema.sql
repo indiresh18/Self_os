@@ -600,7 +600,7 @@ DECLARE
 BEGIN
     -- 1. Create Profile
     INSERT INTO public.profiles (id, email, full_name)
-    VALUES (new_user_id, NEW.email, COALESCE(NEW.raw_user_meta_data->>'full_name', 'MyLife OS Member'));
+    VALUES (new_user_id, NEW.email, COALESCE(NEW.raw_user_meta_data->>'full_name', 'Indiresh'));
 
     -- 2. Create User Settings
     INSERT INTO public.user_settings (user_id, monthly_savings_target, future_savings_target)
@@ -644,19 +644,19 @@ BEGIN
 
     -- 7. Seed Prepopulated Career Current Tasks
     INSERT INTO public.career_tasks (user_id, title, status, priority, semester, roadmap_category) VALUES
-    (new_user_id, 'Complete AI Video Set 1', 'in_progress', 'high', 'general', 'current_tasks'),
+    (new_user_id, 'Complete AI Video Set 1', 'not_started', 'high', 'general', 'current_tasks'),
     (new_user_id, 'Complete AI Video Set 2', 'not_started', 'high', 'general', 'current_tasks'),
     (new_user_id, 'Start MERN Stack', 'not_started', 'urgent', 'semester_4', 'current_tasks'),
-    (new_user_id, 'Develop the MyLife OS application', 'in_progress', 'urgent', 'semester_4', 'current_tasks');
+    (new_user_id, 'Develop the MyLife OS application', 'not_started', 'urgent', 'semester_4', 'current_tasks');
 
     -- 8. Seed Prepopulated 4th Semester Roadmap
     INSERT INTO public.career_tasks (user_id, title, status, priority, semester, roadmap_category) VALUES
     (new_user_id, 'Advanced Java', 'not_started', 'high', 'semester_4', 'roadmap_sem4'),
-    (new_user_id, 'MERN Stack mastery', 'in_progress', 'urgent', 'semester_4', 'roadmap_sem4'),
-    (new_user_id, 'Build 4–5 quality projects', 'in_progress', 'urgent', 'semester_4', 'roadmap_sem4'),
+    (new_user_id, 'MERN Stack mastery', 'not_started', 'urgent', 'semester_4', 'roadmap_sem4'),
+    (new_user_id, 'Build 4–5 quality projects', 'not_started', 'urgent', 'semester_4', 'roadmap_sem4'),
     (new_user_id, 'Learn SEO basics', 'not_started', 'medium', 'semester_4', 'roadmap_sem4'),
     (new_user_id, 'Explore free Oracle Java certifications / badges', 'not_started', 'high', 'semester_4', 'roadmap_sem4'),
-    (new_user_id, 'Continue DSA practice', 'in_progress', 'high', 'semester_4', 'roadmap_sem4');
+    (new_user_id, 'Continue DSA practice', 'not_started', 'high', 'semester_4', 'roadmap_sem4');
 
     -- 9. Seed Prepopulated 5th Semester Roadmap
     INSERT INTO public.career_tasks (user_id, title, status, priority, semester, roadmap_category) VALUES
@@ -669,30 +669,40 @@ BEGIN
 
     -- 10. Seed Prepopulated Career Goals
     INSERT INTO public.career_goals (user_id, title, description, category, priority, progress_pct, status, milestones) VALUES
-    (new_user_id, 'Master Full-Stack & AI Agent Development', 'Build real-world production systems and secure tier-1 placements', 'placement', 'urgent', 35, 'in_progress', 
-     '[{"id": "m1", "title": "Complete 4-5 Full Stack Projects", "completed": false}, {"id": "m2", "title": "Master LeetCode Medium DSA", "completed": false}, {"id": "m3", "title": "Deploy AI Agent App", "completed": true}]'::jsonb);
+    (new_user_id, 'Master Full-Stack & AI Agent Development', 'Build real-world production systems and secure tier-1 placements', 'placement', 'urgent', 0, 'not_started', 
+     '[{"id": "m1", "title": "Complete 4-5 Full Stack Projects", "completed": false}, {"id": "m2", "title": "Master LeetCode Medium DSA", "completed": false}, {"id": "m3", "title": "Deploy AI Agent App", "completed": false}]'::jsonb);
+
+    -- 10b. Seed Prepopulated Skills Tracker (all 0% beginner)
+    INSERT INTO public.skills (user_id, name, category, level, progress_pct) VALUES
+    (new_user_id, 'MERN Stack (MongoDB, Express, React, Node)', 'technical', 'beginner', 0),
+    (new_user_id, 'Advanced Java & OOPs', 'technical', 'beginner', 0),
+    (new_user_id, 'Data Structures & Algorithms', 'technical', 'beginner', 0),
+    (new_user_id, 'SEO Basics & Web Analytics', 'technical', 'beginner', 0),
+    (new_user_id, 'Python & Machine Learning', 'technical', 'beginner', 0),
+    (new_user_id, 'AI Agents & LLM Integration', 'technical', 'beginner', 0),
+    (new_user_id, 'Next.js & Supabase Architecture', 'technical', 'beginner', 0);
 
     -- 11. Seed Prepopulated Certifications
     INSERT INTO public.certifications (user_id, name, provider, course_url, status) VALUES
-    (new_user_id, 'Oracle Free Java Explorer Badges', 'Oracle University', 'https://mylearn.oracle.com', 'in_progress'),
+    (new_user_id, 'Oracle Free Java Explorer Badges', 'Oracle University', 'https://mylearn.oracle.com', 'not_started'),
     (new_user_id, 'Full-Stack Modern Web Certification', 'FreeCodeCamp / Coursera', 'https://www.freecodecamp.org', 'not_started');
 
     -- 12. Seed Prepopulated Projects
     INSERT INTO public.projects (user_id, name, description, tech_stack, status) VALUES
-    (new_user_id, 'MyLife OS', 'Personal self-care, career growth and savings management system', 'Next.js, TypeScript, Tailwind CSS, Supabase', 'in_progress');
+    (new_user_id, 'MyLife OS', 'Personal self-care, career growth and savings management system', 'Next.js, TypeScript, Tailwind CSS, Supabase', 'planned');
 
     -- 13. Seed Prepopulated Purchase Goals
     INSERT INTO public.savings_goals (user_id, title, target_amount, saved_amount, priority, status) VALUES
-    (new_user_id, 'Trimmer', 1500.00, 500.00, 'medium', 'active'),
-    (new_user_id, 'Shirts', 2000.00, 400.00, 'low', 'active'),
-    (new_user_id, 'Pants', 2500.00, 600.00, 'low', 'active'),
-    (new_user_id, 'Going out with friends', 1000.00, 750.00, 'medium', 'active');
+    (new_user_id, 'Trimmer', 1500.00, 0.00, 'medium', 'active'),
+    (new_user_id, 'Shirts', 2000.00, 0.00, 'low', 'active'),
+    (new_user_id, 'Pants', 2500.00, 0.00, 'low', 'active'),
+    (new_user_id, 'Going out with friends', 1000.00, 0.00, 'medium', 'active');
 
     -- 14. Seed Prepopulated Administrative Tasks
     INSERT INTO public.personal_tasks (user_id, title, status, priority, category) VALUES
     (new_user_id, 'Bank account', 'pending', 'high', 'administrative'),
     (new_user_id, 'ATM card', 'pending', 'high', 'administrative'),
-    (new_user_id, 'Aadhaar update', 'in_progress', 'urgent', 'administrative'),
+    (new_user_id, 'Aadhaar update', 'pending', 'urgent', 'administrative'),
     (new_user_id, 'PAN card', 'pending', 'high', 'administrative');
 
     RETURN NEW;
@@ -704,3 +714,4 @@ DROP TRIGGER IF EXISTS on_auth_user_created ON auth.users;
 CREATE TRIGGER on_auth_user_created
     AFTER INSERT ON auth.users
     FOR EACH ROW EXECUTE FUNCTION public.handle_new_user_setup();
+

@@ -53,3 +53,4 @@ export const MobileNav: React.FC<MobileNavProps> = ({ activeTab, setActiveTab })
     </div>
   );
 };
+

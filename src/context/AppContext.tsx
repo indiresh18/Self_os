@@ -163,22 +163,22 @@ interface AppContextType {
 const AppContext = createContext<AppContextType | undefined>(undefined);
 
 const STORAGE_KEYS = {
-  SETTINGS: 'mylife_settings_v1',
-  ROUTINES: 'mylife_routines_v1',
-  ROUTINE_LOGS: 'mylife_routine_logs_v1',
-  HABITS: 'mylife_habits_v1',
-  HABIT_LOGS: 'mylife_habit_logs_v1',
-  FOOD_LOGS: 'mylife_food_logs_v1',
-  WEEKLY_TASKS: 'mylife_weekly_tasks_v1',
-  SHOPPING: 'mylife_shopping_v1',
-  CAREER_TASKS: 'mylife_career_tasks_v1',
-  CAREER_GOALS: 'mylife_career_goals_v1',
-  SKILLS: 'mylife_skills_v1',
-  CERTIFICATIONS: 'mylife_certifications_v1',
-  PROJECTS: 'mylife_projects_v1',
-  SAVINGS_GOALS: 'mylife_savings_goals_v1',
-  TRANSACTIONS: 'mylife_transactions_v1',
-  PERSONAL_TASKS: 'mylife_personal_tasks_v1',
+  SETTINGS: 'mylife_settings_v2',
+  ROUTINES: 'mylife_routines_v2',
+  ROUTINE_LOGS: 'mylife_routine_logs_v2',
+  HABITS: 'mylife_habits_v2',
+  HABIT_LOGS: 'mylife_habit_logs_v2',
+  FOOD_LOGS: 'mylife_food_logs_v2',
+  WEEKLY_TASKS: 'mylife_weekly_tasks_v2',
+  SHOPPING: 'mylife_shopping_v2',
+  CAREER_TASKS: 'mylife_career_tasks_v2',
+  CAREER_GOALS: 'mylife_career_goals_v2',
+  SKILLS: 'mylife_skills_v2',
+  CERTIFICATIONS: 'mylife_certifications_v2',
+  PROJECTS: 'mylife_projects_v2',
+  SAVINGS_GOALS: 'mylife_savings_goals_v2',
+  TRANSACTIONS: 'mylife_transactions_v2',
+  PERSONAL_TASKS: 'mylife_personal_tasks_v2',
 };
 
 export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
@@ -190,6 +190,8 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
   const [settings, setSettings] = useState<UserSettings>({
     id: 's1',
     user_id: 'default',
+    user_name: 'Indiresh',
+    user_email: 'indiresh@example.com',
     theme: 'light',
     monthly_savings_target: MONTHLY_SAVINGS_TARGET,
     future_savings_target: FUTURE_SAVINGS_TARGET,
@@ -940,6 +942,8 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
       setSettings({
         id: 's1',
         user_id: 'default',
+        user_name: 'Indiresh',
+        user_email: 'indiresh@example.com',
         theme: 'light',
         monthly_savings_target: MONTHLY_SAVINGS_TARGET,
         future_savings_target: FUTURE_SAVINGS_TARGET,

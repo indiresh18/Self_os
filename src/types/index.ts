@@ -14,6 +14,8 @@ export interface Profile {
 export interface UserSettings {
   id: string;
   user_id: string;
+  user_name?: string;
+  user_email?: string;
   theme: 'light' | 'dark' | 'system';
   monthly_savings_target: number;
   future_savings_target: number;
@@ -227,3 +229,4 @@ export interface UnifiedTask {
   category: string;
   notes?: string;
 }
+

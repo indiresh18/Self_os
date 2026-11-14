@@ -30,7 +30,7 @@ interface SidebarProps {
 }
 
 export const Sidebar: React.FC<SidebarProps> = ({ activeTab, setActiveTab }) => {
-  const { todayStats, careerTasks, shoppingItems, financialStats } = useApp();
+  const { todayStats, careerTasks, shoppingItems, financialStats, settings } = useApp();
 
   const pendingCareerCount = careerTasks.filter(t => t.status !== 'completed').length;
   const pendingShoppingCount = shoppingItems.filter(s => !s.is_purchased).length;
@@ -152,10 +152,10 @@ export const Sidebar: React.FC<SidebarProps> = ({ activeTab, setActiveTab }) => 
       <div className="mt-auto pt-4 border-t-2 border-black">
         <div className="p-2.5 bg-white dark:bg-zinc-800 border-2 border-black rounded-lg shadow-[2px_2px_0px_#000] flex items-center gap-3">
           <div className="w-9 h-9 rounded-md bg-amber-300 border-2 border-black flex items-center justify-center font-black text-sm text-black shadow-[1px_1px_0px_#000]">
-            OS
+            IN
           </div>
           <div className="overflow-hidden">
-            <div className="text-xs font-black truncate text-black dark:text-white">Indhirani / User</div>
+            <div className="text-xs font-black truncate text-black dark:text-white">{settings.user_name || 'Indiresh'}</div>
             <div className="text-[10px] font-bold text-zinc-500 dark:text-zinc-400 truncate">Tier-1 Roadmap</div>
           </div>
         </div>
@@ -163,3 +163,4 @@ export const Sidebar: React.FC<SidebarProps> = ({ activeTab, setActiveTab }) => 
     </aside>
   );
 };
+
